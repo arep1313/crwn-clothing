@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import MenuItem from '../menu-item/menu-item.component';
 
 import './directory.styles.scss';
@@ -14,7 +15,7 @@ class Directory extends React.Component {
                   title: 'hats',
                   imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
                   id: 1,
-                  linkUrl: 'shop/hats'
+                  linkUrl: 'shop/hats',
                 },
                 {
                   title: 'jackets',
@@ -50,7 +51,8 @@ class Directory extends React.Component {
         return(
         <div className='directory-menu'>
             {
-                this.state.sections.map(({title, imageUrl, id, size})=> (<MenuItem key={id} title={title} imageUrl={imageUrl} size ={size}/>))
+                //this.state.sections.map(({title, imageUrl, id, size})=> (<MenuItem key={id} title={title} imageUrl={imageUrl} size ={size}/>))       //This is how it was before. Now we use ...otherSectionProps so we don't have to write it down like this.  
+                this.state.sections.map(({id, ...otherSectionProps})=> (<MenuItem key={id} {...otherSectionProps}/>))
             }
         </div>
         );
